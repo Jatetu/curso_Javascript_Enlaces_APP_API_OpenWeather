@@ -1,0 +1,27 @@
+h1,
+h2 {
+  font-weight: bolder;
+}
+
+.icono {
+  font-size: 5em;
+  color: whitesmoke;
+  padding-top: 0.3em;
+}
+body {
+  background-color: whitesmoke;
+  color: darkslategray;
+}
+
+#contenido {
+  background-color: darkslategray;
+  color: whitesmoke;
+  padding: 2em;
+  border-radius: 0.5;
+}
+
+.localizacion {
+  padding: 0.5em;
+  background-color: whitesmoke;
+  color: darkslategray;
+}

@@ -1,0 +1,498 @@
+// 1) Variables
+const boton = $("#boton");
+const contenido = $("#contenido");
+const ciudad = $("#ciudad");
+const pais = $("#pais");
+
+const weatherIcons = {
+  "200": {
+    label: "thunderstorm with light rain",
+    icon: "storm-showers"
+  },
+
+  "201": {
+    label: "thunderstorm with rain",
+    icon: "storm-showers"
+  },
+
+  "202": {
+    label: "thunderstorm with heavy rain",
+    icon: "storm-showers"
+  },
+
+  "210": {
+    label: "light thunderstorm",
+    icon: "storm-showers"
+  },
+
+  "211": {
+    label: "thunderstorm",
+    icon: "thunderstorm"
+  },
+
+  "212": {
+    label: "heavy thunderstorm",
+    icon: "thunderstorm"
+  },
+
+  "221": {
+    label: "ragged thunderstorm",
+    icon: "thunderstorm"
+  },
+
+  "230": {
+    label: "thunderstorm with light drizzle",
+    icon: "storm-showers"
+  },
+
+  "231": {
+    label: "thunderstorm with drizzle",
+    icon: "storm-showers"
+  },
+
+  "232": {
+    label: "thunderstorm with heavy drizzle",
+    icon: "storm-showers"
+  },
+
+  "300": {
+    label: "light intensity drizzle",
+    icon: "sprinkle"
+  },
+
+  "301": {
+    label: "drizzle",
+    icon: "sprinkle"
+  },
+
+  "302": {
+    label: "heavy intensity drizzle",
+    icon: "sprinkle"
+  },
+
+  "310": {
+    label: "light intensity drizzle rain",
+    icon: "sprinkle"
+  },
+
+  "311": {
+    label: "drizzle rain",
+    icon: "sprinkle"
+  },
+
+  "312": {
+    label: "heavy intensity drizzle rain",
+    icon: "sprinkle"
+  },
+
+  "313": {
+    label: "shower rain and drizzle",
+    icon: "sprinkle"
+  },
+
+  "314": {
+    label: "heavy shower rain and drizzle",
+    icon: "sprinkle"
+  },
+
+  "321": {
+    label: "shower drizzle",
+    icon: "sprinkle"
+  },
+
+  "500": {
+    label: "light rain",
+    icon: "rain"
+  },
+
+  "501": {
+    label: "moderate rain",
+    icon: "rain"
+  },
+
+  "502": {
+    label: "heavy intensity rain",
+    icon: "rain"
+  },
+
+  "503": {
+    label: "very heavy rain",
+    icon: "rain"
+  },
+
+  "504": {
+    label: "extreme rain",
+    icon: "rain"
+  },
+
+  "511": {
+    label: "freezing rain",
+    icon: "rain-mix"
+  },
+
+  "520": {
+    label: "light intensity shower rain",
+    icon: "showers"
+  },
+
+  "521": {
+    label: "shower rain",
+    icon: "showers"
+  },
+
+  "522": {
+    label: "heavy intensity shower rain",
+    icon: "showers"
+  },
+
+  "531": {
+    label: "ragged shower rain",
+    icon: "showers"
+  },
+
+  "600": {
+    label: "light snow",
+    icon: "snow"
+  },
+
+  "601": {
+    label: "snow",
+    icon: "snow"
+  },
+
+  "602": {
+    label: "heavy snow",
+    icon: "snow"
+  },
+
+  "611": {
+    label: "sleet",
+    icon: "sleet"
+  },
+
+  "612": {
+    label: "shower sleet",
+    icon: "sleet"
+  },
+
+  "615": {
+    label: "light rain and snow",
+    icon: "rain-mix"
+  },
+
+  "616": {
+    label: "rain and snow",
+    icon: "rain-mix"
+  },
+
+  "620": {
+    label: "light shower snow",
+    icon: "rain-mix"
+  },
+
+  "621": {
+    label: "shower snow",
+    icon: "rain-mix"
+  },
+
+  "622": {
+    label: "heavy shower snow",
+    icon: "rain-mix"
+  },
+
+  "701": {
+    label: "mist",
+    icon: "sprinkle"
+  },
+
+  "711": {
+    label: "smoke",
+    icon: "smoke"
+  },
+
+  "721": {
+    label: "haze",
+    icon: "day-haze"
+  },
+
+  "731": {
+    label: "sand, dust whirls",
+    icon: "cloudy-gusts"
+  },
+
+  "741": {
+    label: "fog",
+    icon: "fog"
+  },
+
+  "751": {
+    label: "sand",
+    icon: "cloudy-gusts"
+  },
+
+  "761": {
+    label: "dust",
+    icon: "dust"
+  },
+
+  "762": {
+    label: "volcanic ash",
+    icon: "smog"
+  },
+
+  "771": {
+    label: "squalls",
+    icon: "day-windy"
+  },
+
+  "781": {
+    label: "tornado",
+    icon: "tornado"
+  },
+
+  "800": {
+    label: "clear sky",
+    icon: "sunny"
+  },
+
+  "801": {
+    label: "few clouds",
+    icon: "cloudy"
+  },
+
+  "802": {
+    label: "scattered clouds",
+    icon: "cloudy"
+  },
+
+  "803": {
+    label: "broken clouds",
+    icon: "cloudy"
+  },
+
+  "804": {
+    label: "overcast clouds",
+    icon: "cloudy"
+  },
+
+  "900": {
+    label: "tornado",
+    icon: "tornado"
+  },
+
+  "901": {
+    label: "tropical storm",
+    icon: "hurricane"
+  },
+
+  "902": {
+    label: "hurricane",
+    icon: "hurricane"
+  },
+
+  "903": {
+    label: "cold",
+    icon: "snowflake-cold"
+  },
+
+  "904": {
+    label: "hot",
+    icon: "hot"
+  },
+
+  "905": {
+    label: "windy",
+    icon: "windy"
+  },
+
+  "906": {
+    label: "hail",
+    icon: "hail"
+  },
+
+  "951": {
+    label: "calm",
+    icon: "sunny"
+  },
+
+  "952": {
+    label: "light breeze",
+    icon: "cloudy-gusts"
+  },
+
+  "953": {
+    label: "gentle breeze",
+    icon: "cloudy-gusts"
+  },
+
+  "954": {
+    label: "moderate breeze",
+    icon: "cloudy-gusts"
+  },
+
+  "955": {
+    label: "fresh breeze",
+    icon: "cloudy-gusts"
+  },
+
+  "956": {
+    label: "strong breeze",
+    icon: "cloudy-gusts"
+  },
+
+  "957": {
+    label: "high wind, near gale",
+    icon: "cloudy-gusts"
+  },
+
+  "958": {
+    label: "gale",
+    icon: "cloudy-gusts"
+  },
+
+  "959": {
+    label: "severe gale",
+    icon: "cloudy-gusts"
+  },
+
+  "960": {
+    label: "storm",
+    icon: "thunderstorm"
+  },
+
+  "961": {
+    label: "violent storm",
+    icon: "thunderstorm"
+  },
+
+  "962": {
+    label: "hurricane",
+    icon: "cloudy-gusts"
+  }
+};
+
+let interruptor = $("#interruptor");
+let estado = "";
+let predicciones = [];
+
+// 2) Funciones
+
+const compruebaEstado = () => {
+  if (interruptor.prop("checked")) {
+    estado = "weather";
+  } else {
+    estado = "forecast";
+  }
+  return estado;
+};
+
+const LlamarAPI = url => {
+  $.ajax({
+    url: url,
+    //dataType: "json",
+    success: function(response) {
+      console.log(response);
+      let micontenido = "";
+      if (estado == "weather") {
+        let lugarAPI = response.name;
+        let paisAPI = response.sys.country;
+        let temperatura = Math.round(response.main.temp);
+        let descripcion = response.weather[0].description;
+        let idIcono = response.weather[0].id;
+        let nombreIcono = weatherIcons[idIcono].icon;
+
+        micontenido =
+          /*html*/
+          `
+        <span><i class="wi wi-day-${nombreIcono} icono mb-3"></i></span>
+        <h4>${lugarAPI}, ${paisAPI} </h4>
+
+        <span class="temperatura rounded">
+        ${descripcion}</br>
+        <h2>${temperatura} ºC</h2> </span>
+        `;
+      } else {
+        let numero =
+          parseInt(window.prompt("¿cuántas predicciones quieres ver?")) + 1;
+        let lugarAPI = response.city.name;
+        let paisAPI = response.city.country;
+        predicciones = response.list;
+        micontenido =
+          /*html*/
+          `
+              <div class="localizacion">
+              <h2>${lugarAPI}, ${paisAPI} </h2>
+              </div>
+            `;
+
+        for (let i = 1; i < numero; i++) {
+          let momento = predicciones[i].dt_txt;
+          let fecha =
+            momento.substring(8, 10) +
+            "/" +
+            momento.substring(5, 7) +
+            "/" +
+            momento.substring(0, 4);
+
+          let hora = momento.substring(11, 16);
+          let temperatura = Math.round(predicciones[i].main.temp);
+          let descripcion = predicciones[i].weather[0].description;
+          let idIcono = predicciones[i].weather[0].id;
+          let nombreIcono = weatherIcons[idIcono].icon;
+          micontenido +=
+            /*html*/
+            `
+                <div class="row justify-content-center  align-items-center mt-2">
+
+                <div class="col-4">
+                    ${fecha}</br>
+                    ${hora}</br>
+                    ${descripcion}
+                  </div>
+                  <div class="col-3">
+                      <span><i class="wi wi-day-${nombreIcono} icono mb-3"></i></span>
+                  </div>
+                  <div class="col-3">
+                      <h4>${temperatura} ºC</h4> 
+                  </div>
+                </div>
+            `;
+        }
+      }
+      contenido.fadeOut("fast", function() {
+        $(this)
+          .fadeIn("fast")
+          .html(micontenido);
+      });
+    },
+    error: function() {
+      let micontenido = /*html*/ `
+     <div class="bg-danger p-3">No se ha encontrado la localidad <b> ${ciudad.val()}</b></div>`;
+      contenido.html(micontenido);
+    }
+  });
+  ciudad.val("");
+};
+
+const PrepararURL = e => {
+  //e.preventDefault();
+  estado = compruebaEstado();
+
+  let key = "0e099914afab291a3b11698262841880";
+  let url = `http://api.openweathermap.org/data/2.5/${estado}?`;
+
+  url += `q=${ciudad.val()},${pais.val()}`;
+  url += `&appid=${key}`;
+  url += `&units=metric`;
+  url += `&lang=es`;
+
+  LlamarAPI(url);
+};
+
+const DetectarTecla = e => {
+  if (e.keyCode == 13) PrepararURL();
+};
+
+// 3) Eventos
+boton.on("click", PrepararURL);
+ciudad.on("keyup", DetectarTecla);

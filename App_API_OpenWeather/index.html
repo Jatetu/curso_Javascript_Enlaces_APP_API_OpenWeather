@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-toggle.min.css" />
+
+    <link rel="stylesheet" href="css/mi.css" />
+    <link rel="stylesheet" href="css/weather-icons.min.css" />
+
+    <title>El tiempo en sus manos</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center mt-5">
+        <div>
+          <h1>El tiempo en sus manos</h1>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-5 ">
+          <input
+            type="text"
+            id="ciudad"
+            class="form-control"
+            placeholder="Localidad"
+            required
+          />
+        </div>
+        <div class="col-3 ">
+          <input
+            type="text"
+            id="pais"
+            class="form-control"
+            placeholder="País (ej:ES)"
+            value="ES"
+            required
+            ;
+          />
+        </div>
+        <div class="col-2">
+          <button class="btn btn-secondary" id="boton">
+            Enviar
+          </button>
+        </div>
+        <div class="col-2 ">
+          <div class="checkbox">
+            <input
+              type="checkbox"
+              id="interruptor"
+              checked
+              data-toggle="toggle"
+              data-offstyle="info"
+              data-on="Predicción"
+              data-off="Actual"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div id="contenido" class="col-8 text-center p-2 mt-4 rounded"></div>
+      </div>
+    </div>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/mi.js"></script>
+    <script src="js/bootstrap-toggle.min.js"></script>
+  </body>
+</html>
